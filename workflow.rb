@@ -27,11 +27,13 @@ module Workflow
           method.to_s.downcase.include?(self.method.downcase) && [-1, 0].include?(method.arity)
         end
         methods.each do |method|
+          result = method.call rescue next
+
           klass_short = klass.to_s.split("::").last.downcase
           query = [klass_short, method.name].join(" ")
-          items << Item.new(query,
-                            method.call,
-                            (klasses.size == 1) ? query : klass_short)
+          autocomplete = (klasses.size == 1) ? query : klass_short
+
+          items << Item.new(query, result, autocomplete)
         end
       end
 
