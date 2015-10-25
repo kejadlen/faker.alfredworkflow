@@ -9,6 +9,7 @@ require "faker"
 module Workflow
   class Faker
     FAKER_KLASSES = ::Faker.constants
+                           .reject {|c| c == :Config }
                            .map {|c| ::Faker.const_get(c) }
                            .select {|c| Class === c}
 
