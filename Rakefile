@@ -2,8 +2,7 @@ require "rake/testtask"
 
 namespace :workflow do
   desc "Prepare a release, named after the directory"
-  task :release, [:version] => [:vendor_check, :tag, :package] do |t, args|
-  end
+  task :release, [:version] => [:vendor_check, :tag, :package]
 
   task :tag, [:version] do |t, args|
     version = args[:version]
@@ -29,11 +28,17 @@ Can't tag #{version}: dirty working directory.
 Did you remember to vendor your dependencies?
 
   rm -rf vendor
-  chruby-exec 2.0.0 -- bundle install --deployment --standalone
+  rake workflow:vendor[2.0.0]
 
 Continue? (y/[n])
     PUTS
     abort if STDIN.gets.chomp.downcase != ?y
+  end
+
+  desc "Vendor Ruby gem dependencies"
+  task :vendor, [:version] do |_, args|
+    version = args[:version]
+    sh "chruby-exec #{version} -- bundle install --deployment --standalone"
   end
 end
 
