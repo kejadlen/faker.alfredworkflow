@@ -28,7 +28,7 @@ Can't tag #{version}: dirty working directory.
 Did you remember to vendor your dependencies?
 
   rm -rf vendor
-  chruby-exec 2.0.0 -- bundle install --standalone --path=vendor --without=development,test
+  chruby-exec 2.0.0 -- bundle install --standalone --path=vendor --without=development,test --clean
 
 Continue? (y/[n])
     PUTS
