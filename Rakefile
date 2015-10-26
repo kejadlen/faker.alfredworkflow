@@ -2,7 +2,7 @@ require "rake/testtask"
 
 namespace :workflow do
   desc "Prepare a release, named after the directory"
-  task :release, [:version] => [:tag, :package] do |t, args|
+  task :release, [:version] => [:vendor_check, :tag, :package] do |t, args|
   end
 
   task :tag, [:version] do |t, args|
@@ -16,7 +16,7 @@ Can't tag #{version}: dirty working directory.
     sh "git tag #{version}"
   end
 
-  task package: :vendor_check do
+  task :package do
     sh "zip #{__FILE__.pathmap("%-1d").pathmap("%n.alfredworkflow")} *"
     rm_rf "vendor"
   end
