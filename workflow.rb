@@ -32,7 +32,7 @@ module Workflow
 
           klass_short = klass.to_s.split("::").last.downcase
           query = [klass_short, method.name].join(" ")
-          autocomplete = (klasses.size == 1) ? query : klass_short
+          autocomplete = klass_short
 
           items << Item.new(query, result, autocomplete)
         end
