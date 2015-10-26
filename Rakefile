@@ -16,19 +16,19 @@ Can't tag #{version}: dirty working directory.
     sh "git tag #{version}"
   end
 
-  task package: :vendor do
+  task package: :vendor_check do
     sh "zip #{__FILE__.pathmap("%-1d").pathmap("%n.alfredworkflow")} *"
     rm_rf "vendor"
   end
 
   # Unfortunately, this can't be done automatically due to this chruby issue:
   #   https://github.com/postmodern/chruby/issues/193
-  task :vendor do
+  task :vendor_check do
     puts <<-PUTS
 Did you remember to vendor your dependencies?
 
   rm -rf vendor
-  chruby-exec 2.0.0 -- bundle install --standalone --path=vendor --without=development,test --clean
+  chruby-exec 2.0.0 -- bundle install --deployment --standalone
 
 Continue? (y/[n])
     PUTS
