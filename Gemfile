@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
-gem "builder"
-gem "faker"
+gem "alphred", "~> 1.0"
+gem "faker", "~> 1.5"
 
 group :development do
   gem "minitest"

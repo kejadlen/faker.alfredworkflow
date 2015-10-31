@@ -1,13 +1,15 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    alphred (1.0.0)
+      builder (~> 3.2)
     builder (3.2.2)
     coderay (1.1.0)
     faker (1.5.0)
       i18n (~> 0.5)
     i18n (0.7.0)
     method_source (0.8.2)
-    minitest (5.8.1)
+    minitest (5.8.2)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -19,8 +21,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  builder
-  faker
+  alphred (~> 1.0)
+  faker (~> 1.5)
   minitest
   pry
   rake
