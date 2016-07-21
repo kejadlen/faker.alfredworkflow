@@ -8,56 +8,50 @@ require 'faker'
 
 module Workflow
   class Faker
-    FAKER_KLASSES = ::Faker.constants
-                           .reject {|c| c == :Config }
-                           .map {|c| ::Faker.const_get(c) }
-                           .select {|c| Class === c}
-    FAKER_METHODS = FAKER_KLASSES.flat_map {|klass|
-      klass.singleton_methods(false)
-           .map {|m| klass.method(m) }
-           .select {|m| [-1, 0].include?(m.arity) }
-    }
-
-    attr_reader :query
-
-    def initialize(*query)
-      @query = query.map {|term| Regexp.new(term, Regexp::IGNORECASE) }
-    end
-
     def items
-      items = Alphred::Items.new
+      Alphred::Items[
+        faker_methods.map { |method|
+          result = method.call rescue next # Ignore missing translations
 
-      self.matching_methods.each do |method|
-        result = method.call rescue next # Ignore missing translations
+          klass = method.owner.to_s[/#<Class:(.*)>/, 1]
+          klass_short = klass.split('::').last.downcase
+          query = [klass_short, method.name]
 
-        klass = method.owner.to_s[/#<Class:(.*)>/, 1]
-        klass_short = klass.split('::').last.downcase
-        query = [klass_short, method.name].join(' ')
-
-        items << Item.new(query, result, query)
-      end
-
-      items
+          Item.new(query, result)
+        }
+      ]
     end
 
-    # def matching_methods(klass)
-    def matching_methods
-      FAKER_METHODS.select { |method|
-        query.all? { |term|
-          method.to_s =~ term || method.owner.to_s =~ term
-        }
+    private
+
+    def faker_klasses
+      ::Faker.constants
+        .reject {|c| c == :Config }
+        .map {|c| ::Faker.const_get(c) }
+        .select {|c| Class === c}
+    end
+
+    def faker_methods
+      faker_klasses.flat_map { |klass|
+        klass.singleton_methods(false)
+          .map {|m| klass.method(m) }
+          .select {|m| [-1, 0].include?(m.arity) }
       }
     end
   end
 
   class Item < SimpleDelegator
-    def initialize(query, result, autocomplete)
+    def initialize(query, result)
+      query_string = query.join(' ')
+      title = query[0]
+      title << " [#{query[1..-1].join(' ')}]" if query.size > 1
+
       super(
         Alphred::Item.new(
-          uid: query,
+          uid: query_string,
           arg: result,
-          autocomplete: autocomplete,
-          title: query,
+          autocomplete: query_string,
+          title: title,
           subtitle: result,
           icon: 'icon.png',
         )
@@ -67,7 +61,6 @@ module Workflow
 end
 
 if __FILE__ == $0
-  query = ARGV.shift
-  workflow = Workflow::Faker.new(*query.split(/\s+/))
+  workflow = Workflow::Faker.new
   puts workflow.items.to_json
 end
