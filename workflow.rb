@@ -50,10 +50,18 @@ module Workflow
     end
   end
 
-  class Item < Alphred::Item
+  class Item < SimpleDelegator
     def initialize(query, result, autocomplete)
-      super(uid: query, arg: result, autocomplete: autocomplete,
-            title: query, subtitle: result, icon: 'icon.png')
+      super(
+        Alphred::Item.new(
+          uid: query,
+          arg: result,
+          autocomplete: autocomplete,
+          title: query,
+          subtitle: result,
+          icon: 'icon.png',
+        )
+      )
     end
   end
 end
@@ -61,5 +69,5 @@ end
 if __FILE__ == $0
   query = ARGV.shift
   workflow = Workflow::Faker.new(*query.split(/\s+/))
-  puts workflow.items.to_xml
+  puts workflow.items.to_json
 end

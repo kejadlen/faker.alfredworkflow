@@ -123,23 +123,23 @@
 		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>300</integer>
+			<integer>180</integer>
 			<key>ypos</key>
-			<real>70</real>
+			<integer>200</integer>
 		</dict>
 		<key>9DE3E4D9-4D72-4C53-9013-D1B1C4AE8776</key>
 		<dict>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>580</integer>
 			<key>ypos</key>
-			<real>130</real>
+			<integer>260</integer>
 		</dict>
 		<key>B5EB1D6A-BBD4-461B-AEBC-5A1CFBD844FA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>700</integer>
+			<integer>580</integer>
 			<key>ypos</key>
-			<real>10</real>
+			<integer>140</integer>
 		</dict>
 	</dict>
 	<key>webaddress</key>

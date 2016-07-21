@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    alphred (1.0.0)
+    alphred (2.0.0)
       builder (~> 3.2)
     builder (3.2.2)
     coderay (1.1.0)
@@ -21,11 +21,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  alphred (~> 1.0)
+  alphred (~> 2.0)
   faker (~> 1.5)
   minitest
   pry
   rake
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
