@@ -44,7 +44,7 @@ module Workflow
     def initialize(query, result)
       query_string = query.join(' ')
       title = query[0]
-      title << " [#{query[1..-1].join(' ')}]" if query.size > 1
+      title << " - #{query[1..-1].join(' ')}" if query.size > 1
 
       super(
         Alphred::Item.new(
