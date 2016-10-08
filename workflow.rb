@@ -10,7 +10,7 @@ module Workflow
   class Faker
     def items
       Alphred::Items[
-        faker_methods.map { |method|
+        *faker_methods.map { |method|
           result = method.call rescue next # Ignore missing translations
 
           klass = method.owner.to_s[/#<Class:(.*)>/, 1]
@@ -18,7 +18,7 @@ module Workflow
           query = [klass_short, method.name]
 
           Item.new(query, result)
-        }
+        }.compact
       ]
     end
 
