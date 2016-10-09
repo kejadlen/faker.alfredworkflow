@@ -1,3 +1,7 @@
+## [2.0.3] - 2016-10-08
+### Changed
+- Actually roll a good release
+
 ## [2.0.1] - 2016-10-08
 ### Changed
 - Fixed the workflow
