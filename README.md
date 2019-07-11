@@ -4,6 +4,12 @@ This [Alfred](https://www.alfredapp.com/) workflow generates fake data using
 the [Faker](https://github.com/stympy/faker) Ruby gem. I use it mainly for
 creating dummy answers for security questions required for creating accounts.
 
+## Installation
+
+```sh
+bundle install --standalone --path vendor/bundle --without development test
+```
+
 ## Credits
 
 - [Faker](https://github.com/stympy/faker)
