@@ -45,21 +45,39 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alignment</key>
+				<integer>0</integer>
+				<key>backgroundcolor</key>
+				<string></string>
+				<key>fadespeed</key>
+				<integer>0</integer>
+				<key>fillmode</key>
+				<integer>0</integer>
+				<key>font</key>
+				<string></string>
 				<key>largetypetext</key>
 				<string>{query}</string>
+				<key>textcolor</key>
+				<string></string>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.largetype</string>
 			<key>uid</key>
 			<string>B5EB1D6A-BBD4-461B-AEBC-5A1CFBD844FA</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
 				<key>argumenttype</key>
 				<integer>0</integer>
 				<key>escaping</key>
@@ -96,7 +114,7 @@
 			<key>uid</key>
 			<string>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -113,7 +131,7 @@
 			<key>uid</key>
 			<string>9DE3E4D9-4D72-4C53-9013-D1B1C4AE8776</string>
 			<key>version</key>
-			<integer>2</integer>
+			<integer>3</integer>
 		</dict>
 	</array>
 	<key>readme</key>
