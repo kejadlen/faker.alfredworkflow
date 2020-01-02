@@ -8,3 +8,8 @@ Rake::TestTask.new do |t|
 end
 
 task default: :test
+
+desc "Vendor dependencies"
+task :vendor do
+  sh "bundle --standalone --path vendor/bundle --without development test"
+end
