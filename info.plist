@@ -45,10 +45,14 @@
 				<integer>0</integer>
 				<key>font</key>
 				<string></string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>largetypetext</key>
 				<string>{query}</string>
 				<key>textcolor</key>
 				<string></string>
+				<key>wrapat</key>
+				<integer>50</integer>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.output.largetype</string>
@@ -113,6 +117,8 @@
 				<false/>
 				<key>clipboardtext</key>
 				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
 				<key>transient</key>
 				<false/>
 			</dict>
@@ -131,25 +137,27 @@
 		<key>6C68D0BB-A89A-4FDD-BB99-B5A5B460646E</key>
 		<dict>
 			<key>xpos</key>
-			<integer>180</integer>
+			<real>180</real>
 			<key>ypos</key>
-			<integer>200</integer>
+			<real>200</real>
 		</dict>
 		<key>9DE3E4D9-4D72-4C53-9013-D1B1C4AE8776</key>
 		<dict>
 			<key>xpos</key>
-			<integer>580</integer>
+			<real>580</real>
 			<key>ypos</key>
-			<integer>260</integer>
+			<real>260</real>
 		</dict>
 		<key>B5EB1D6A-BBD4-461B-AEBC-5A1CFBD844FA</key>
 		<dict>
 			<key>xpos</key>
-			<integer>580</integer>
+			<real>580</real>
 			<key>ypos</key>
-			<integer>140</integer>
+			<real>140</real>
 		</dict>
 	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
 	<key>webaddress</key>
 	<string>https://github.com/kejadlen/faker</string>
 </dict>
